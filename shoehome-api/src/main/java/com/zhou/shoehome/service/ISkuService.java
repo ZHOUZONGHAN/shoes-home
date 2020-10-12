@@ -2,11 +2,11 @@ package com.zhou.shoehome.service;
 
 import com.zhou.shoehome.bean.PmsSkuInfo;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
  * @author zhouzh6
- * @date 2020-10-05
  */
 public interface ISkuService {
 
@@ -17,4 +17,6 @@ public interface ISkuService {
     List<PmsSkuInfo> getSkuSaleAttrValueListBySpu(String productId);
 
     List<PmsSkuInfo> getAllSku();
+
+    boolean checkPrice(String productSkuId, BigDecimal productPrice);
 }

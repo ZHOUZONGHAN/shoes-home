@@ -8,7 +8,6 @@ import java.util.List;
 
 /**
  * @author zhouzh6
- * @date 2020-10-04
  */
 public interface ISpuService {
 

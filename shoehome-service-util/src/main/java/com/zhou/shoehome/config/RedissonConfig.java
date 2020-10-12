@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author zhouzh6
- * @date 2020-10-06
  */
 @Configuration
 public class RedissonConfig {
