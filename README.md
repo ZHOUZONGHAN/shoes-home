@@ -43,3 +43,10 @@ shoehome-order-web
 
 shoehome-order-service
 > 端口号9086<br/>
+
+### shoehome-payment 支付中心
+shoehome-payment-web
+> 端口号8087<br/>
+
+shoehome-payment-service
+> 端口号9087<br/>

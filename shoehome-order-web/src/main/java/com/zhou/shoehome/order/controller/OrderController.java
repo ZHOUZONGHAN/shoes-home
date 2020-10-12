@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,7 +45,7 @@ public class OrderController {
 
     @RequestMapping("submitOrder")
     @LoginRequired(loginSuccess = true)
-    public String submitOrder(String receiveAddressId, BigDecimal totalAmount, String tradeCode, HttpServletRequest request) {
+    public ModelAndView submitOrder(String receiveAddressId, BigDecimal totalAmount, String tradeCode, HttpServletRequest request) {
         String memberId = (String) request.getAttribute("memberId");
         String nickname = (String) request.getAttribute("nickname");
 
@@ -90,7 +91,8 @@ public class OrderController {
                     // 验价
                     boolean verifyPriceRes = skuService.checkPrice(omsCartItem.getProductSkuId(), omsCartItem.getPrice());
                     if (!verifyPriceRes) {
-                        return "tradeFail";
+                        ModelAndView mv = new ModelAndView("tradeFail");
+                        return mv;
                     }
 
                     // TODO 验库存
@@ -121,13 +123,15 @@ public class OrderController {
             // 将订单和订单项写入数据库
             orderService.saveOrder(omsOrder);
 
-
             // TODO 进入支付系统
+            ModelAndView modelAndView = new ModelAndView("redirect:http://47.110.60.206:8087/index");
+            modelAndView.addObject("outTradeNo", outTradeNo);
+            modelAndView.addObject("totalAmount", totalAmount);
+            return modelAndView;
         } else {
-            return "tradeFail";
+            ModelAndView mv = new ModelAndView("tradeFail");
+            return mv;
         }
-
-        return null;
     }
 
     @RequestMapping("toTrade")
