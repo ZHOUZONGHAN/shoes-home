@@ -1,8 +1,8 @@
 HELP.md
 target/
-**/.mvn
-**/mvnw
-**/*.cmd
+**/.mvn/*
+mvnw
+*.cmd
 **/target
 */WEB-INF/lib
 
