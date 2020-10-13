@@ -157,5 +157,8 @@ public class SkuServiceImpl implements ISkuService {
             pmsSkuImage.setSkuId(skuId);
             pmsSkuImageMapper.insertSelective(pmsSkuImage);
         }
+
+        // TODO 用消息队列做同步缓存、同步ES
+
     }
 }

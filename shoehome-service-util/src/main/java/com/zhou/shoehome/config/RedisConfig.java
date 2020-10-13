@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RedisConfig {
 
-    @Value("${redis.host:disabled}")
+    @Value("${spring.redis.host:disabled}")
     private String host;
 
-    @Value("${redis.port:6379}")
+    @Value("${spring.redis.port:6379}")
     private int port;
 
     @Value("${redis.database:0}")

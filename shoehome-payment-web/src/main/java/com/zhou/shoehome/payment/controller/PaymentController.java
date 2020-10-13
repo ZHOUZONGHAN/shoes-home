@@ -59,7 +59,6 @@ public class PaymentController {
             paymentInfo.setCallbackTime(new Date());
 
             paymentService.updatePayment(paymentInfo);
-
         }
         return "finish";
     }
@@ -89,8 +88,8 @@ public class PaymentController {
         paymentInfo.setTotalAmount(totalAmount);
         paymentService.savePaymentInfo(paymentInfo);
 
-//        // 向消息中间件发送一个检查支付状态(支付服务消费)的延迟消息队列
-//        paymentService.sendDelayPaymentResultCheckQueue(outTradeNo,5);
+        // 向消息中间件发送一个检查支付状态(支付服务消费)的延迟消息队列
+        paymentService.sendDelayPaymentResultCheckQueue(outTradeNo, 5);
 
         // 提交请求到支付宝
         return form;
