@@ -1,4 +1,4 @@
-package com.zhou.shoehome.seckill;
+package com.zhou.shoehome;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

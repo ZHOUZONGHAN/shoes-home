@@ -110,9 +110,11 @@ public class PaymentServiceImpl implements IPaymentService {
     public void updatePayment(PaymentInfo paymentInfo) {
         // 幂等性检查
         PaymentInfo paymentInfoParam = new PaymentInfo();
+        // 获取支付信息paymentInfo中的订单
         paymentInfoParam.setOrderSn(paymentInfo.getOrderSn());
         PaymentInfo paymentInfoResult = paymentInfoMapper.selectOne(paymentInfoParam);
 
+        // 如果订单的祝福状态是以支付就直接返回
         if ("已支付".equals(paymentInfoResult.getPaymentStatus())) {
             return;
         }
